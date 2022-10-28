@@ -14,9 +14,9 @@
     "@mantine/hooks": "^4.1.4",
     "@mantine/next": "^4.1.4",
     "firebase": "^9.4.0",
-    "next": "12",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "next": "^13.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swr": "^1.1.2"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
     "eslint": "^7.0.0",
-    "eslint-config-next": "^11",
+    "eslint-config-next": "^13.0.0",
     "typescript": "^4.4.4"
   }
 }
