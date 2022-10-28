@@ -1,5 +1,5 @@
 import { Button, Divider, Group, Modal, PasswordInput, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { useAuth } from '../../lib/firebase.auth';
 
@@ -12,7 +12,7 @@ export default function LoginModal() {
             password: '',
         },
 
-        validationRules: {
+        validate: {
             email: (val) => /^\S+@\S+$/.test(val),
             password: (val) => val.length >= 6,
         },

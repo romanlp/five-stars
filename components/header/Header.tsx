@@ -1,5 +1,5 @@
 import { Avatar, Group, Menu, Text, UnstyledButton } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useAuth } from "../../lib/firebase.auth";
@@ -10,7 +10,7 @@ import styles from './Header.module.css';
 export default function Header() {
     const { user, signout } = useAuth();
 
-    const [opened, toggleOpened] = useBooleanToggle(false);
+    const [opened, toggleOpened] = useDisclosure(false);
     const [userMenuOpened, setUserMenuOpened] = useState(false);
 
 
