@@ -1,18 +1,12 @@
-import { Avatar, Group, Menu, Text, UnstyledButton } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import {Avatar, Group, Menu, Text, UnstyledButton} from '@mantine/core';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useAuth } from "../../lib/firebase.auth";
+import {useAuth} from "../../lib/firebase.auth";
 import LoginModal from '../login-modal/LoginModal';
 import styles from './Header.module.css';
 
 
 export default function Header() {
-    const { user, signout } = useAuth();
-
-    const [opened, toggleOpened] = useDisclosure(false);
-    const [userMenuOpened, setUserMenuOpened] = useState(false);
-
+    const {user, signout} = useAuth();
 
 
     return <header className={styles.header}>Five Stars
@@ -21,28 +15,28 @@ export default function Header() {
 
             {user ?
                 <Menu
-                    size={260}
-                    placement="end"
+                    width={260}
                     transition="pop-top-right"
-                    onClose={() => setUserMenuOpened(false)}
-                    onOpen={() => setUserMenuOpened(true)}
-                    control={
+                >
+                    <Menu.Target>
                         <UnstyledButton>
                             <Group spacing={7}>
-                                <Avatar src={user.photoUrl} alt={user.email} radius="xl" size={25} />
-                                <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3} color="#f57e7e">
+                                <Avatar src={user.photoUrl} alt={user.email} radius="xl" size={25}/>
+                                <Text weight={500} size="sm" sx={{lineHeight: 1}} mr={3} color="#f57e7e">
                                     {user.email}
                                 </Text>
                             </Group>
                         </UnstyledButton>
-                    }
-                >
-                    <Menu.Item onClick={() => signout()}>
-                        Log out
-                    </Menu.Item>
+                    </Menu.Target>
+
+                    <Menu.Dropdown>
+                        <Menu.Item onClick={() => signout()}>
+                            Log out
+                        </Menu.Item>
+                    </Menu.Dropdown>
                 </Menu>
                 :
-                <LoginModal />
+                <LoginModal/>
             }
         </nav>
     </header>
