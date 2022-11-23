@@ -1,8 +1,9 @@
+import React from "react";
 import Link from "next/link";
 import Image, { ImageLoader } from "next/image";
-import Ratings from "../ratings/Ratings";
-import React from "react";
 import { Card, Group, Text } from "@mantine/core";
+
+import Ratings from "../ratings/Ratings";
 
 export default function MovieCard({ movie, user }) {
 
