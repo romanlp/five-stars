@@ -1,21 +1,31 @@
-import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import Image, { ImageLoader } from "next/image";
 import Ratings from "../ratings/Ratings";
+import React from "react";
+import { Card, Group, Text } from "@mantine/core";
 
 export default function MovieCard({ movie, user }) {
 
   return (
-    <div className={styles.card}>
-      <Link href={'/movie/' + movie.id} passHref>
-        <h2>{movie.title}</h2>
-      </Link>
-      <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} width={100} height={148}/>
-      <div>
-        {user ? <Ratings movie={movie}/> : ''}
-      </div>
-    </div>
-  )
+    <Card withBorder radius="md" p={0}>
+      <Group noWrap spacing={0}>
+        <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} height={180} width={120}/>
+        <Group mx="md">
+          <Link href={'/movie/' + movie.id} passHref>
+            <Text mt="xs" mb="xs" weight="bold">
+              {movie.title}
+            </Text>
+            <Text color="dimmed" size="xs" mb="md" lineClamp={3}>
+              {movie.overview}
+            </Text>
+          </Link>
+          <Group noWrap spacing="xs">
+            {user ? <Ratings movie={movie}/> : ''}
+          </Group>
+        </Group>
+      </Group>
+    </Card>
+  );
 }
 
 const tmdbLoader: ImageLoader = ({ src, width, quality }) => {
