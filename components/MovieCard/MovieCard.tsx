@@ -8,7 +8,7 @@ import Ratings from "../ratings/Ratings";
 export default function MovieCard({ movie, user }) {
 
   return (
-    <Card withBorder radius="md" p={0}>
+    <Card withBorder radius="sm" p={0}>
       <Group noWrap spacing={0}>
         <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} height={180} width={120}/>
         <Group mx="md">
