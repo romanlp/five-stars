@@ -6,12 +6,11 @@ import {
   signInWithPopup,
   signOut
 } from 'firebase/auth';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import Router from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { createUser, dbRateMovie } from './firebase.db';
-import { User } from "./interfaces/user.type";
+import { createUser, dbRateMovie, getUser } from './firebase.db';
+import { User } from "./interfaces";
 
 interface AuthContext {
   user: User;
@@ -34,11 +33,10 @@ export const useAuth = () => {
 };
 
 const auth = getAuth();
-const db = getFirestore();
 
 function useProvideAuth() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleUser = async (rawUser) => {
     if (rawUser) {
@@ -103,7 +101,7 @@ function useProvideAuth() {
 }
 
 const formatUser = async (user) => {
-  const userData = await getDoc(doc(db, 'users', user.uid));
+  const userData = await getUser(user.uid);
 
   const formattedUser: User = {
     uid: user.uid,
