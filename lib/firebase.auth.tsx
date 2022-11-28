@@ -1,7 +1,15 @@
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onIdTokenChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut
+} from 'firebase/auth';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import Router from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
+
 import { createUser, dbRateMovie } from './firebase.db';
 
 interface AuthContext {
@@ -41,7 +49,7 @@ function useProvideAuth() {
       setLoading(false);
       return user;
     } else {
-      setUser(false);
+      setUser(null);
       setLoading(false);
       return false;
     }
