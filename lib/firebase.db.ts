@@ -1,8 +1,7 @@
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 import firebaseApp from "./firebase";
-import { Movie } from "./interfaces/movie.type";
-import { User } from "./interfaces/user.type";
+import { Movie, User } from "./interfaces";
 
 const db = getFirestore(firebaseApp);
 
