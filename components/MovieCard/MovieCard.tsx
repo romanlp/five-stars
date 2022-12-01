@@ -4,8 +4,14 @@ import Image, { ImageLoader } from "next/image";
 import { Card, Group, Text } from "@mantine/core";
 
 import Ratings from "../ratings/Ratings";
+import { Movie, User } from "../../lib/interfaces";
 
-export default function MovieCard({ movie, user }) {
+interface Props {
+  movie: Movie;
+  user: User
+}
+
+export default function MovieCard({ movie, user }: Props) {
 
   return (
     <Card withBorder radius="sm" p={0}>

@@ -6,14 +6,14 @@ import {
   signInWithPopup,
   signOut
 } from 'firebase/auth';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import Router from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { createUser, dbRateMovie } from './firebase.db';
+import { createUser, dbRateMovie, getUser } from './firebase.db';
+import { User } from "./interfaces";
 
 interface AuthContext {
-  user: { uid: string, email: string, ratings: any, photoUrl: string };
+  user: User;
   loading: boolean;
   signinWithEmail: (email: string, password: string) => Promise<any>;
   signinWithGoogle: (redirect?: string) => Promise<any>;
@@ -33,18 +33,16 @@ export const useAuth = () => {
 };
 
 const auth = getAuth();
-const db = getFirestore();
 
 function useProvideAuth() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleUser = async (rawUser) => {
     if (rawUser) {
       const user = await formatUser(rawUser);
-      const { token, ...userWithoutToken } = user;
 
-      createUser(user.uid, userWithoutToken);
+      createUser(user.uid, user);
       setUser(user);
       setLoading(false);
       return user;
@@ -103,16 +101,15 @@ function useProvideAuth() {
 }
 
 const formatUser = async (user) => {
-  const token = await user.getIdToken();
-  const userData = await getDoc(doc(db, 'users', user.uid));
+  const userData = await getUser(user.uid);
 
-  return {
+  const formattedUser: User = {
     uid: user.uid,
     email: user.email,
     name: user.displayName,
     provider: user.providerData[0].providerId,
     photoUrl: user.photoURL,
     ratings: userData.data().ratings,
-    token
   };
+  return formattedUser;
 };
