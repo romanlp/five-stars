@@ -1,4 +1,15 @@
-import { arrayUnion, doc, getDoc, getFirestore, setDoc, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  setDoc,
+  updateDoc,
+  where
+} from "firebase/firestore";
 
 import firebaseApp from "./firebase";
 import { Movie, User } from "./interfaces";
@@ -43,4 +54,15 @@ export const getMovie = async (id: string) => {
   const movie = await tmdbApi.getMovie(id);
   await createMovie('' + movie.id, movie);
   return movie;
+}
+
+export const getMovies = async (id: (string | number)[]) => {
+  console.log(id)
+  const q = query(collection(db, "movies"), where("id", "in", id));
+  const docSnap = await getDocs(q);
+  console.log(docSnap);
+  let movies: Movie[] = [];
+  docSnap.forEach(doc => movies.push(doc.data() as Movie));
+  console.log(movies);
+  return movies;
 }
