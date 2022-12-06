@@ -1,4 +1,4 @@
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, getFirestore, setDoc, updateDoc } from "firebase/firestore";
 
 import firebaseApp from "./firebase";
 import { Movie, User } from "./interfaces";
@@ -21,6 +21,12 @@ export const dbRateMovie = async (userId: string, id: string, rating: number) =>
       [id]: rating
     }
   }, { merge: true });
+};
+
+export const dbAddToWatchlist = async (userId: string, id: string) => {
+  await updateDoc(doc(db, 'users', userId), {
+    watchlist: arrayUnion(id)
+  });
 };
 
 export const createMovie = async (id: string, movie: Movie) => {
