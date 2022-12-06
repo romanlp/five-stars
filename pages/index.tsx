@@ -1,11 +1,12 @@
-import {Grid} from '@mantine/core';
-import {getPerformance} from "firebase/performance";
+import { Grid } from '@mantine/core';
+import { getPerformance } from "firebase/performance";
 import Head from 'next/head';
 import firebaseApp from '../lib/firebase';
 import styles from '../styles/Home.module.css';
-import {useAuth} from "../lib/firebase.auth";
+import { useAuth } from "../lib/firebase.auth";
 import MovieCard from "../components/MovieCard/MovieCard";
 import React from "react";
+import SearchMovie from "../components/SearchMovie/SearchMovie";
 
 if (process.browser) {
   getPerformance(firebaseApp);
@@ -27,6 +28,8 @@ export default function Home({ posts }) {
         <h1 className={styles.title}>
           Discover
         </h1>
+
+        <SearchMovie/>
 
         <Grid gutter="lg">
           {posts.results.map(movie => (
