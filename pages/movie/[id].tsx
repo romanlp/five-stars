@@ -1,9 +1,11 @@
+import { Button } from "@mantine/core";
 import Image, { ImageLoader } from 'next/image';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
 import Ratings from "../../components/ratings/Ratings";
+import { useAuth } from "../../lib/firebase.auth";
 import { getMovie } from "../../lib/firebase.db";
 import styles from "./Movie.module.css";
 
@@ -14,6 +16,9 @@ function MoviePage() {
   const router = useRouter()
   const { id } = router.query
   const { data, error } = useSWR(id, fetcher);
+  const { user, addToWatchlist } = useAuth();
+
+  const isInWatchlist = user?.watchlist.includes(data?.id);
 
   if (!data) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -39,13 +44,26 @@ function MoviePage() {
         <p>{data.production_companies.map(e => e.name).join(', ')}</p>
       </div>
 
+      <section className={styles.ratingContainer}>
+        {!isInWatchlist ?
+          <Button color="yellow" size="xs" onClick={() => addToWatchlist(data.id)}>
+            Add to watchlist
+          </Button> :
+          <Button color="yellow" size="xs" disabled>
+            Added
+          </Button>
+        }
+      </section>
+
       <section className={styles.ratingContainer} id={styles.ratingGrid}>
         <p>Rate the movie</p>
         <Ratings movie={data}/>
       </section>
+
+
       <div>
         <Link href={'/'} passHref>
-          <button>Go Back</button>
+          <Button>Go Back</Button>
         </Link>
       </div>
     </section>

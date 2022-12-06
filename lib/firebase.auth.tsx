@@ -19,7 +19,7 @@ interface AuthContext {
   signinWithGoogle: (redirect?: string) => Promise<any>;
   signout: () => Promise<any>;
   rateMovie: (id: string, ratings: number) => void;
-  addToWatchlist: (id: string) => void;
+  addToWatchlist: (id: string | number) => void;
 }
 
 const authContext = createContext<AuthContext>(undefined);
