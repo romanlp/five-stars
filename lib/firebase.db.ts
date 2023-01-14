@@ -2,6 +2,7 @@ import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 import firebaseApp from "./firebase";
 import { Movie, User } from "./interfaces";
+import * as tmdbApi from "./tmdb.api";
 
 const db = getFirestore(firebaseApp);
 
@@ -27,5 +28,13 @@ export const createMovie = async (id: string, movie: Movie) => {
 }
 
 export const getMovie = async (id: string) => {
-  return await getDoc(doc(db, 'movies', id));
+  const docSnap = await getDoc(doc(db, 'movies', id));
+
+  if (docSnap.exists()) {
+    return docSnap.data() as Movie;
+  }
+
+  const movie = await tmdbApi.getMovie(id);
+  await createMovie('' + movie.id, movie);
+  return movie;
 }
