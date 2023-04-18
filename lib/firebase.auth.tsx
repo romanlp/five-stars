@@ -9,7 +9,7 @@ import {
 import Router from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { createUser, dbRateMovie, getUser } from './firebase.db';
+import { createUser, dbAddToWatchlist, dbRateMovie, getUser } from './firebase.db';
 import { User } from "./interfaces";
 
 interface AuthContext {
@@ -19,6 +19,7 @@ interface AuthContext {
   signinWithGoogle: (redirect?: string) => Promise<any>;
   signout: () => Promise<any>;
   rateMovie: (id: string, ratings: number) => void;
+  addToWatchlist: (id: string | number) => void;
 }
 
 const authContext = createContext<AuthContext>(undefined);
@@ -83,6 +84,11 @@ function useProvideAuth() {
     dbRateMovie(user.uid, id, rating);
   }
 
+  const addToWatchlist = (id: string) => {
+    setUser(user => ({ ...user, watchlist: [...user.watchlist, id] }));
+    dbAddToWatchlist(user.uid, id);
+  }
+
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, handleUser);
@@ -94,6 +100,7 @@ function useProvideAuth() {
     user,
     loading,
     rateMovie,
+    addToWatchlist,
     signinWithEmail,
     signinWithGoogle,
     signout
@@ -102,14 +109,15 @@ function useProvideAuth() {
 
 const formatUser = async (user) => {
   const userData = await getUser(user.uid);
-
+  const data = userData.data();
   const formattedUser: User = {
     uid: user.uid,
     email: user.email,
     name: user.displayName,
     provider: user.providerData[0].providerId,
     photoUrl: user.photoURL,
-    ratings: userData.data().ratings,
+    ratings: data.ratings ?? {},
+    watchlist: data.watchlist ?? [],
   };
   return formattedUser;
 };
