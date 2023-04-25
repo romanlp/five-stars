@@ -1,20 +1,29 @@
-import React from "react";
-import Link from "next/link";
+import { Card, createStyles, Group, Text } from "@mantine/core";
 import Image, { ImageLoader } from "next/image";
-import { Card, Group, Text } from "@mantine/core";
+import Link from "next/link";
+import React from "react";
+import { Movie, User } from "../../lib/interfaces";
 
 import Ratings from "../ratings/Ratings";
-import { Movie, User } from "../../lib/interfaces";
 
 interface Props {
   movie: Movie;
   user: User
 }
 
+const useStyles = createStyles((theme) => ({
+  card: {
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'light' ? theme.colors.gray[1] : theme.colors.dark[5],
+    },
+  },
+}));
+
 export default function MovieCard({ movie, user }: Props) {
+  const { classes } = useStyles();
 
   return (
-    <Card withBorder radius="sm" p={0}>
+    <Card withBorder radius="sm" p={0} className={classes.card}>
       <Group noWrap spacing={0}>
         <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} height={180} width={120}/>
         <Group mx="md">
