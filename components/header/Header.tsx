@@ -1,6 +1,5 @@
 import { ActionIcon, Avatar, Group, Menu, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
-
 import Link from 'next/link';
 import { useAuth } from "../../lib/firebase.auth";
 import LoginModal from '../login-modal/LoginModal';
@@ -12,7 +11,6 @@ export default function Header() {
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
-
 
   return <header className={styles.header}>Five Stars
     <nav className={styles.navitem}>
@@ -35,6 +33,13 @@ export default function Header() {
           </Menu.Target>
 
           <Menu.Dropdown>
+            <Link href="/ratings">
+              <Menu.Item>My ratings</Menu.Item>
+            </Link>
+            <Link href="/watchlist">
+              <Menu.Item>Watchlist</Menu.Item>
+            </Link>
+            <Menu.Divider/>
             <Menu.Item onClick={() => signout()}>
               Log out
             </Menu.Item>
