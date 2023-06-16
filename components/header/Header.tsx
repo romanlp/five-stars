@@ -1,4 +1,5 @@
-import { Avatar, Group, Menu, Text, UnstyledButton } from '@mantine/core';
+import { ActionIcon, Avatar, Group, Menu, Text, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { IconMoonStars, IconSun } from "@tabler/icons-react";
 import Link from 'next/link';
 import { useAuth } from "../../lib/firebase.auth";
 import LoginModal from '../login-modal/LoginModal';
@@ -8,6 +9,8 @@ import styles from './Header.module.css';
 export default function Header() {
   const { user, signout } = useAuth();
 
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   return <header className={styles.header}>Five Stars
     <nav className={styles.navitem}>
@@ -16,7 +19,7 @@ export default function Header() {
       {user ?
         <Menu
           width={260}
-          transition="pop-top-right"
+          transitionProps={{ transition: "scale-y", duration: 75 }}
         >
           <Menu.Target>
             <UnstyledButton>
@@ -45,6 +48,14 @@ export default function Header() {
         :
         <LoginModal/>
       }
+      <ActionIcon
+        variant="outline"
+        color={dark ? 'yellow' : 'blue'}
+        onClick={() => toggleColorScheme()}
+        title="Toggle color scheme"
+      >
+        {dark ? <IconSun size="1.1rem"/> : <IconMoonStars size="1.1rem"/>}
+      </ActionIcon>
     </nav>
   </header>
 }
