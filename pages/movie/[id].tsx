@@ -18,7 +18,7 @@ function MoviePage() {
   const { data, error } = useSWR(id, fetcher);
   const { user, addToWatchlist } = useAuth();
 
-  const isInWatchlist = user?.watchlist.includes(data?.id);
+  const isInWatchlist = data?.id && user?.watchlist.includes(data?.id);
 
   if (!data) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -27,7 +27,10 @@ function MoviePage() {
     <section className={styles.movieContainer}>
       <h1 id={styles.h1Grid}>{data.title}</h1>
       <div className={styles.moviePoster} id={styles.imgGrid}>
-        <Image loader={tmdbLoader} src={data.poster_path} alt={data.title} width={300} height={450}/>
+        {
+          data.poster_path &&
+          <Image loader={tmdbLoader} src={data.poster_path} alt={data.title} width={300} height={450}/>
+        }
       </div>
       <div id={styles.plotGrid}>
         <h2 className={styles.listItem}>Plot</h2>

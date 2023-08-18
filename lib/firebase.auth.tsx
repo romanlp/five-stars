@@ -13,7 +13,7 @@ import { createUser, dbAddToWatchlist, dbRateMovie, getUser } from './firebase.d
 import { User } from "./interfaces";
 
 interface AuthContext {
-  user: User;
+  user: User | null;
   loading: boolean;
   signinWithEmail: (email: string, password: string) => Promise<any>;
   signinWithGoogle: (redirect?: string) => Promise<any>;
@@ -22,7 +22,19 @@ interface AuthContext {
   addToWatchlist: (id: string | number) => void;
 }
 
-const authContext = createContext<AuthContext>(undefined);
+const defaultContext: AuthContext = {
+  user: null,
+  loading: true,
+  signinWithEmail: () => Promise.resolve(),
+  signinWithGoogle: () => Promise.resolve(),
+  signout: () => Promise.resolve(),
+  rateMovie: () => {
+  },
+  addToWatchlist: () => {
+  },
+}
+
+const authContext = createContext<AuthContext>(defaultContext);
 
 export function AuthProvider({ children }) {
   const auth = useProvideAuth();
@@ -80,12 +92,14 @@ function useProvideAuth() {
   };
 
   const rateMovie = (id, rating) => {
-    setUser(user => ({ ...user, ratings: { ...user.ratings, [id]: rating } }));
+    if (!user) return;
+    setUser(user => user && ({ ...user, ratings: { ...user.ratings, [id]: rating } }));
     dbRateMovie(user.uid, id, rating);
   }
 
   const addToWatchlist = (id: string) => {
-    setUser(user => ({ ...user, watchlist: [...user.watchlist, id] }));
+    if (!user) return;
+    setUser(user => user && ({ ...user, watchlist: [...user.watchlist, id] }));
     dbAddToWatchlist(user.uid, id);
   }
 
@@ -116,8 +130,8 @@ const formatUser = async (user) => {
     name: user.displayName,
     provider: user.providerData[0].providerId,
     photoUrl: user.photoURL,
-    ratings: data.ratings ?? {},
-    watchlist: data.watchlist ?? [],
+    ratings: data?.ratings ?? {},
+    watchlist: data?.watchlist ?? [],
   };
   return formattedUser;
 };
