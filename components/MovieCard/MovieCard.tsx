@@ -8,7 +8,7 @@ import Ratings from "../ratings/Ratings";
 
 interface Props {
   movie: Movie;
-  user: User
+  user: User | null;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -25,7 +25,10 @@ export default function MovieCard({ movie, user }: Props) {
   return (
     <Card withBorder radius="sm" p={0} className={classes.card}>
       <Group noWrap spacing={0}>
-        <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} height={180} width={120}/>
+        {
+          movie.poster_path &&
+          <Image loader={tmdbLoader} src={movie.poster_path} alt={movie.title} height={180} width={120}/>
+        }
         <Group mx="md">
           <Link href={'/movie/' + movie.id} passHref>
             <Text mt="xs" mb="xs" weight="bold">

@@ -18,7 +18,7 @@ import * as tmdbApi from "./tmdb.api";
 const db = getFirestore(firebaseApp);
 
 export const createUser = (uid: string, data: User) => {
-  return setDoc(doc(db, 'users', uid), { uid, ...data }, { merge: true });
+  return setDoc(doc(db, 'users', uid), { ...data, uid }, { merge: true });
 };
 
 export const getUser = (uid: string) => {
