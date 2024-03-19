@@ -20,7 +20,7 @@
     "firebase": "^9",
     "firebase-admin": "^11.10.1",
     "firebase-frameworks": "^0.10.5",
-    "next": "^13.5",
+    "next": "^14",
     "react": "^18.2",
     "react-dom": "^18.2",
     "swr": "^2.1"
