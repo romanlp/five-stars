@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10",
+    "@emotion/react": "^11.11",
     "@emotion/server": "^11.10",
     "@mantine/core": "^6.0",
     "@mantine/form": "^6.0",
