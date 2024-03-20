@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10",
+    "@emotion/react": "^11.11",
     "@emotion/server": "^11.10",
     "@mantine/core": "^6.0",
     "@mantine/form": "^6.0",
@@ -26,7 +26,7 @@
     "swr": "^2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.21",
+    "@babel/core": "^7.24",
     "@types/node": "^18.16",
     "@types/react": "^18.0",
     "eslint": "^8.39",
