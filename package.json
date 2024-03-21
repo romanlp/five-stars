@@ -29,7 +29,7 @@
     "@babel/core": "^7.24",
     "@types/node": "^18.16",
     "@types/react": "^18.0",
-    "eslint": "^8.39",
+    "eslint": "^8.57",
     "eslint-config-next": "^13.3",
     "typescript": "^5.0"
   }
