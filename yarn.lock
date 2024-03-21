@@ -1283,18 +1283,17 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tabler/icons-react@^2.17":
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-2.30.0.tgz#e7ece4b83d6cd66b3a4ec043b89bf18e5341c03e"
-  integrity sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==
+"@tabler/icons-react@^3.1":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-3.1.0.tgz#5202b5cc7c6e57dde75c41981b618dcfebd69b50"
+  integrity sha512-k/WTlax2vbj/LpxvaJ+BmaLAAhVUgyLj4Ftgaczz66tUSNzqrAZXCFdOU7cRMYPNVBqyqE2IdQd2rzzhDEJvkw==
   dependencies:
-    "@tabler/icons" "2.30.0"
-    prop-types "^15.7.2"
+    "@tabler/icons" "3.1.0"
 
-"@tabler/icons@2.30.0":
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-2.30.0.tgz#4ea3c4da56fd5653bb9d0be0dc7feaa33602555c"
-  integrity sha512-tvtmkI4ALjKThVVORh++sB9JnkFY7eGInKxNy+Df7WVQiF7T85tlvGADzlgX4Ic+CK5MIUzZ0jhOlQ/RRlgXpg==
+"@tabler/icons@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-3.1.0.tgz#d69d184eae572db6adb452b511562442133cc26d"
+  integrity sha512-CpZGyS1IVJKFcv88yZ2sYZIpWWhQ6oy76BQKQ5SF0fGgOqgyqKdBGG/YGyyMW632on37MX7VqQIMTzN/uQqmFg==
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -3873,7 +3872,7 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
