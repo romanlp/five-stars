@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24",
-    "@types/node": "^18.16",
+    "@types/node": "^20.11",
     "@types/react": "^18.2",
     "eslint": "^8.57",
     "eslint-config-next": "^14.1",
