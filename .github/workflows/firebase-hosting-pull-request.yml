@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      checks: read
+      checks: write
     steps:
       - uses: actions/checkout@v4
       - run: yarn && yarn build
