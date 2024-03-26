@@ -27,7 +27,7 @@ export default function MovieCard({ movie, user }: Props) {
             <Text mt="xs" mb="xs" fw="bold">
               {movie.title}
             </Text>
-            <Text color="dimmed" size="xs" mb="md" lineClamp={3}>
+            <Text c="dimmed" size="xs" mb="md" lineClamp={3}>
               {movie.overview}
             </Text>
           </Link>
