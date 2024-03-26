@@ -29,7 +29,7 @@ export default function Watchlist() {
 
         <Grid gutter="lg">
           {movies.map(movie => (
-            <Grid.Col sm={6} lg={4} key={movie.id}>
+            <Grid.Col span={{ base: 6, lg: 4 }} key={movie.id}>
               <MovieCard movie={movie} user={user}/>
             </Grid.Col>
           ))}

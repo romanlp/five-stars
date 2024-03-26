@@ -15,8 +15,8 @@ export const getDiscoverMovies = async () => {
   return await res.json() as PaginatedResult<MovieSummary>;
 }
 
-export const searchMovies = async (search: string) => {
-  const res = await fetch(`${baseUrl}/search/movie?query=${search}&${apiKey}`);
+export const searchMovies = async (search: string, signal: AbortSignal) => {
+  const res = await fetch(`${baseUrl}/search/movie?query=${search}&${apiKey}`, { signal });
   return await res.json() as PaginatedResult<MovieSummary>;
 }
 

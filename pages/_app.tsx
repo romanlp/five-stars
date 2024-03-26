@@ -1,7 +1,5 @@
-import { AppShell, ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
-import { useColorScheme } from "@mantine/hooks";
+import { AppShell, MantineProvider } from '@mantine/core';
 import { AppProps } from 'next/app';
-import { useEffect, useState } from "react";
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
 import { AuthProvider } from '../lib/firebase.auth';
@@ -9,38 +7,25 @@ import '../styles/globals.css';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const preferredColorScheme = useColorScheme();
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(preferredColorScheme);
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
-
-  useEffect(() => {
-    setColorScheme(preferredColorScheme)
-  }, [preferredColorScheme]);
-
   return (
     <>
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{ colorScheme }}
-        >
+      <MantineProvider defaultColorScheme="auto">
 
-          <AuthProvider>
+        <AuthProvider>
+          <AppShell padding="md">
+            <AppShell.Header>
+              <Header/>
+            </AppShell.Header>
 
-            <AppShell
-              padding="md"
-              header={<Header/>}
-              footer={<Footer/>}
-            >
-              <Component {...pageProps} />
-            </AppShell>
-          </AuthProvider>
+            <Component {...pageProps} />
 
-        </MantineProvider>
-      </ColorSchemeProvider>
+            <AppShell.Footer>
+              <Footer/>
+            </AppShell.Footer>
+          </AppShell>
+        </AuthProvider>
 
+      </MantineProvider>
     </>
   );
 }
