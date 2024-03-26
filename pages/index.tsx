@@ -1,12 +1,12 @@
 import { Grid } from '@mantine/core';
 import { getPerformance } from "firebase/performance";
 import Head from 'next/head';
-import firebaseApp from '../lib/firebase';
-import styles from '../styles/Home.module.css';
-import { useAuth } from "../lib/firebase.auth";
-import MovieCard from "../components/MovieCard/MovieCard";
 import React from "react";
+import MovieCard from "../components/MovieCard/MovieCard";
 import SearchMovie from "../components/SearchMovie/SearchMovie";
+import firebaseApp from '../lib/firebase';
+import { useAuth } from "../lib/firebase.auth";
+import styles from '../styles/Home.module.css';
 
 if (process.browser) {
   getPerformance(firebaseApp);
@@ -33,7 +33,7 @@ export default function Home({ posts }) {
 
         <Grid gutter="lg">
           {posts.results.map(movie => (
-            <Grid.Col sm={6} lg={4} key={movie.id}>
+            <Grid.Col span={{ base: 6, lg: 4 }} key={movie.id}>
               <MovieCard movie={movie} user={user}/>
             </Grid.Col>
           ))}

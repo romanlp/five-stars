@@ -23,9 +23,9 @@ export default function Header() {
         >
           <Menu.Target>
             <UnstyledButton>
-              <Group spacing={7}>
+              <Group gap={7}>
                 <Avatar src={user.photoUrl} alt={user.email} radius="xl" size={25}/>
-                <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3} color="#f57e7e">
+                <Text fw={500} size="sm" lh={1} mr={3} c="#f57e7e">
                   {user.email}
                 </Text>
               </Group>
