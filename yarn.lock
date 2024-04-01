@@ -1340,12 +1340,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^7.7.0":
-  version: 7.7.0
-  resolution: "@mantine/hooks@npm:7.7.0"
+"@mantine/hooks@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/hooks@npm:7.7.1"
   peerDependencies:
     react: ^18.2.0
-  checksum: 7f08478ca20ca65253c54610b07f4cd8e1fe372635acd1c4c712ca7c5947410677e7164318c87cf34756e0f413bd7f5422def7a6d9c258a25bcd48db63d724c8
+  checksum: 7f9e6f32783aa051ad9eef14353a1202c501fc23e7ec1f85dbaf7c497b996d9b00e8042dc25bc7929940e7111da3c9f2421ef0dc98a6e11c9babfe69b1aeb6ea
   languageName: node
   linkType: hard
 
@@ -3367,7 +3367,7 @@ __metadata:
     "@emotion/server": ^11.10
     "@mantine/core": ^7.7.0
     "@mantine/form": ^7.7.0
-    "@mantine/hooks": ^7.7.0
+    "@mantine/hooks": ^7.7.1
     "@mantine/next": ^6
     "@tabler/icons-react": ^3.1
     "@types/node": ^20.11

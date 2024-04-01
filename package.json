@@ -14,7 +14,7 @@
     "@emotion/server": "^11.10",
     "@mantine/core": "^7.7.0",
     "@mantine/form": "^7.7.0",
-    "@mantine/hooks": "^7.7.0",
+    "@mantine/hooks": "^7.7.1",
     "@mantine/next": "^6",
     "@tabler/icons-react": "^3.1",
     "firebase": "^10",
