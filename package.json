@@ -31,7 +31,7 @@
     "@types/node": "^20.12",
     "@types/react": "^18.2",
     "eslint": "^8.57",
-    "eslint-config-next": "^14.1",
+    "eslint-config-next": "^14.2",
     "typescript": "^5.4"
   }
 }
