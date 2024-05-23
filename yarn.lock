@@ -950,9 +950,9 @@
     type-fest "^4.12.0"
 
 "@mantine/form@^7":
-  version "7.9.2"
-  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.9.2.tgz#0b38342bed8ce66d96b7fb83076d4d48e4c4e4fb"
-  integrity sha512-G3n4VcK8LksJG9NncOwROXwxIJPXhpFF5FNemU+mCyuqzYI2bj8qsLh12e3wf9m1eZ2kmYjK4UpqP/AOptHHCQ==
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.10.0.tgz#3e8e3fb836948becb13b89412c74016b50bac3d3"
+  integrity sha512-ChAtqdQCAZrnH6iiCivumyMuMsev+tFWIgsCCgAmbP2sOyMtjbNtypKrcwBwI/PzAH9N4jSJlsmJsnRdXNeEkQ==
   dependencies:
     fast-deep-equal "^3.1.3"
     klona "^2.0.6"
