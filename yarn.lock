@@ -2477,9 +2477,9 @@ firebase-admin@^12:
     "@google-cloud/storage" "^7.7.0"
 
 firebase-frameworks@^0.11:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/firebase-frameworks/-/firebase-frameworks-0.11.3.tgz#f338269e80fcc8005873cd686375dfae0fab96be"
-  integrity sha512-ovxaGO3Vqpjwqrb9z3S+PnhKzauWZhb5hSzaG7Y4F6sBTwbD0IzMf3x20ok1SVvNRYD9d5K10Wa18MSrJcIQUA==
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/firebase-frameworks/-/firebase-frameworks-0.11.4.tgz#a5e716a77cfb5569ac4fafc11ea71180414278d9"
+  integrity sha512-QZVRITOVbjnANHSZ4IzEx8nWq4KuOjf+2YHa6YzketE9/OmsNVssksKV3JTyp2SZC8egEybW5KGkGptnEa+V9A==
   dependencies:
     "@hapi/accept" "^6.0.1"
     cookie "^0.5.0"
